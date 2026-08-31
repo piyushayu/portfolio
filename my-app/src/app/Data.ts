@@ -3,24 +3,24 @@ import { Dataschema } from "./DataSchema";
 export const Data : Dataschema = {
     home : {
         name : "Piyush",
-        description : ["I'm a web developer" , "I'm a software engineer"],
+        description : ["I build scalable, high-performance web applications with a strong focus on backend development." , "I’m a passionate developer focused on building things that are useful, reliable, and thoughtfully designed."],
         avatar : "",
         homeimage : "",
         Role : ["Full Stack Developer", "A Frontend Developer" , "A Backend Developer"],
         Sociallink : [
         {
             platform : "Twitter",
-            url : "https://twitter.com/piyush",
+            url : "https://twitter.com/confusedpiyush",
             icon : "",
         },
         {
             platform : "Github",
-            url : "https://github.com/piyuayu",
+            url : "https://github.com/piyushayu",
             icon : "",
         },
         {
             platform : "Linkedin",
-            url : "www.linkedin.com/in/piyush-singh-1b9a0036a",
+            url : "https://www.linkedin.com/in/piyush-singh-1b9a0036a/",
             icon : "",
         }
         ]

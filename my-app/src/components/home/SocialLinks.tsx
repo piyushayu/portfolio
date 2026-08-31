@@ -1,23 +1,18 @@
 import Link from "next/link"
-
-const links = [
-  { href: "https://github.com/yourhandle",      label: "GitHub",   icon: "GH" },
-  { href: "https://linkedin.com/in/yourid",      label: "LinkedIn", icon: "in" },
-  { href: "https://twitter.com/yourhandle",      label: "Twitter",  icon: "𝕏"  },
-]
+import { Data } from "@/app/Data"
 
 export default function SocialLinks() {
   return (
     <nav className="flex items-center gap-4">
-      {links.map((l) => (
+      {Data.home.Sociallink.map((link) => (
         <Link
-          key={l.label}
-          href={l.href}
+          key={link.platform}
+          href={link.url}
           target="_blank"
-          aria-label={l.label}
+          aria-label={link.platform}
           className="text-neutral-500 text-sm hover:text-neutral-200 transition-colors duration-200"
         >
-          {l.icon}
+          {link.platform}
         </Link>
       ))}
     </nav>

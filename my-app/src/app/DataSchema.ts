@@ -1,21 +1,13 @@
 
-export interface Data extends Document {
-  home : Object;
-  projects : Object[];
-  tech : Object;
-  Contact : Object;
-  footer : Object;
-}
-
 export interface link {
- platform : String,
- url : String,
- icon : String,
+ platform : string,
+ url : string,
+ icon : string,
 }
 
 export interface Stack {
-    name : String,
-    image : String
+    name : string,
+    image : string
 }
 
 export interface projecttech {
@@ -24,22 +16,22 @@ export interface projecttech {
 
 export interface Dataschema {
    home : {
-    name : String,
-    description : String[],
-    avatar : String,
-    homeimage : String,
-    Role : String[],
+    name : string,
+    description : string[],
+    avatar : string,
+    homeimage : string,
+    Role : string[],
     Sociallink : link[];
    },
     
    projects : [
     {
-    title : String,
-    shortdescription : String,
-    description : String,
-    image : String,
-    link : String,
-    githublink : String,
+    title : string,
+    shortdescription : string,
+    description : string,
+    image : string,
+    link : string,
+    githublink : string,
     tech : projecttech[]
     }
    ],
@@ -51,18 +43,14 @@ export interface Dataschema {
    },
 
    Contact : {
-    Headline : String,
+    Headline : string,
    }
 
    footer : {
-    Quote : String,
-    Quotename : String,
-    name : String,
-    year : Number;
+    Quote : string,
+    Quotename : string,
+    name : string,
+    year : number;
    }
 
 } 
-
-
-
-
