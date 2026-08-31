@@ -1,6 +1,8 @@
 "use client"
 import { useEffect, useState } from "react"
 import { Data } from "@/app/Data"
+import Image from "next/image"
+import Avatar from "../../../public/avatar.png"
 
 export default function HeroIntro() {
   const roles = Data.home.Role
@@ -23,14 +25,15 @@ export default function HeroIntro() {
 
   return (
     <section className="mb-7">
-      <p className="text-[13px] text-neutral-500 mb-1 font-mono">
+      <div className="flex flex-row justify-between relative">
+      <div className="flex flex-col gap-2 mt-13">
+      <p className="text-[16px] text-neutral-500 mb-1 font-mono">
         Hello. I&apos;m
       </p>
-      <div className="flex items-baseline flex-wrap gap-x-2.5 mb-4">
-        <h1 className="text-[28px] font-medium text-neutral-100 tracking-tight leading-tight font-mono">
+      <div className="flex items-baseline flex-wrap gap-x-2.5">
+      <h1 className="text-[28px] font-medium text-neutral-100 tracking-tight leading-tight font-mono">
           {Data.home.name}
-        </h1>
-
+      </h1>
         <div className="flex items-center text-[22px] text-neutral-500 font-light font-mono">
           <span className="mr-2 text-neutral-600">—</span>
           <span
@@ -44,11 +47,19 @@ export default function HeroIntro() {
           </span>
         </div>
       </div>
-
+      </div>
+          <Image
+        src={Avatar}
+        alt="Avatar"
+        width={90}
+        height={90}
+        className="rounded-md border-2 border-[#111] object-cover w-35 h-35 shrink-0 mb-3"
+      />
+      </div>
       {Data.home.description.map((desc, index) => (
         <p
           key={index}
-          className="text-[13.5px] text-neutral-400 leading-relaxed mb-3 font-mono"
+          className="text-xl text-neutral-400 leading-relaxed mb-3 font-mono"
         >
           {desc}
         </p>
