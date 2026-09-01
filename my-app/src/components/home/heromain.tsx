@@ -4,6 +4,8 @@ import HeroBanner       from "@/components/home/HeroBanner"
 import HeroIntro        from "@/components/home/HeroIntro"
 import CTAButtons       from "@/components/home/CTAButtons"
 import Navbar           from "@/components/home/Navbar"
+import GithubHeatmap    from "@/components/home/GithubHeatmap"
+
 export default function HeroMain() {
   return (
     <div className="max-w-200 mx-auto px-5 pt-10 pb-20">
@@ -22,6 +24,9 @@ export default function HeroMain() {
 
       {/* ── CTA Buttons ── */}
       <CTAButtons />
+
+      {/* ── GitHub Contributions ── */}
+      <GithubHeatmap />
 
     </div>
   )
