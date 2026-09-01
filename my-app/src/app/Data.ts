@@ -1,4 +1,5 @@
 import { Dataschema } from "./DataSchema";
+import vetshaathi from "../../public/vetsaathi.png"
 
 export const Data : Dataschema = {
     home : {
@@ -31,7 +32,7 @@ export const Data : Dataschema = {
             title : "Vetshaathi",
             shortdescription : "A virtual consultant for animal disease",
             description : "It helps to find the disease on the basis of suitable symptoms and give the medicine details to cure it",
-            image : "",
+            image : vetshaathi, // or we can also use /vetsaathi.png directly here because nextjs provide this feature in build time
             link : "",
             githublink : "",
             tech : [

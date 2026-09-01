@@ -8,7 +8,7 @@ import GithubHeatmap    from "@/components/home/GithubHeatmap"
 
 export default function HeroMain() {
   return (
-    <div className="max-w-200 mx-auto px-5 pt-10 pb-20">
+    <div className="max-w-200 mx-auto px-5 pt-10 pb-8">
 
       {/* ── Top Bar ── */}
       <div className="flex justify-between mb-4">

@@ -1,3 +1,4 @@
+import { StaticImageData } from "next/image";
 
 export interface link {
  platform : string,
@@ -29,7 +30,7 @@ export interface Dataschema {
     title : string,
     shortdescription : string,
     description : string,
-    image : string,
+    image : StaticImageData | string,
     link : string,
     githublink : string,
     tech : projecttech[]

@@ -158,8 +158,8 @@ export default function GithubHeatmap() {
 
           {/* grid — offset down by LABEL_HEIGHT */}
           <g transform={`translate(0, ${LABEL_HEIGHT})`}>
-            {weeks.map((week, wi) =>
-              week.contributionDays.map((day, di) => {
+            {weeks.map((week: any, wi: number) =>
+              week.contributionDays.map((day: ContributionDay, di: number) => {
                 const level = getLevel(day.contributionCount);
                 const x = wi * STEP;
                 const y = di * STEP;
