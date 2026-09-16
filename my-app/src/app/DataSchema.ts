@@ -8,7 +8,8 @@ export interface link {
 
 export interface Stack {
     name : string,
-    image : string
+    icons : string,
+    category?: "frontend" | "backend" | "technologies",
 }
 
 export interface projecttech {
@@ -40,7 +41,7 @@ export interface Dataschema {
    tech : {
     Frontend : Stack[],
     Backend : Stack[],
-    Stack : Stack[];
+    Technologies: Stack[]
    },
 
    Contact : {
