@@ -105,11 +105,11 @@ export const Data : Dataschema = {
     },
 
     Contact : {
-        Headline : "Wanna Share your thoughts with me"
+        Headline : "If you have came so far then you might have something to share with me , let's talk"
     },
 
     footer :{
-        Quote : "Your every thought becomes quote when you become successfull",
+        Quote : `"Once you’re rich, every sentence you say turns into a motivational quote."`,
         Quotename : "Piyush Singh",
         name : "Piyush",
         year : 2026
