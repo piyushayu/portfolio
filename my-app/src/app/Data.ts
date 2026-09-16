@@ -49,6 +49,26 @@ export const Data : Dataschema = {
         }
     ],
 
+    blogs : [
+        {
+            title : "Scaling Backend Services with Event-Driven Architecture",
+            shortdescription : "A deep dive into message queues and decoupling microservices",
+            description : "How to handle high throughput systems using Kafka and Redis pub/sub patterns effectively.",
+            image : vetshaathi,
+            link : "#",
+            date : "Sep 2026",
+            
+        },
+        {
+            title : "Building Modern Real-Time Applications with WebSockets",
+            shortdescription : "Understanding connection lifecycle and connection state handling",
+            description : "Best practices for maintaining scalable WebSocket infrastructure with automatic reconnection.",
+            image : vetshaathi,
+            link : "#",
+            date : "Aug 2026",
+        }
+    ],
+
     tech : {
         Frontend: [
             { name: "TypeScript", icons: "https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" },

@@ -8,10 +8,10 @@ export default function Skillcomp() {
   const [activeTab, setActiveTab] = useState<string>("All");
 
   const categories: { key: string; label: string }[] = [
-    { key: "all", label: "All" },
-    { key: "frontend", label: "Frontend" },
-    { key: "backend", label: "Backend" },
-    { key: "technologies", label: "Technologies" },
+    { key: "All", label: "All" },
+    { key: "Frontend", label: "Frontend" },
+    { key: "Backend", label: "Backend" },
+    { key: "Technologies", label: "Technologies" },
   ];
 
   const Alltech : Stack[] = Data.tech.Frontend.concat(Data.tech.Backend).concat(Data.tech.Technologies)

@@ -16,6 +16,15 @@ export interface projecttech {
     name : string
 }
 
+export interface BlogItem {
+    title : string,
+    shortdescription : string,
+    description : string,
+    image : StaticImageData | string,
+    link : string,
+    date : string
+}
+
 export interface Dataschema {
    home : {
     name : string,
@@ -37,6 +46,8 @@ export interface Dataschema {
     tech : projecttech[]
     }
    ],
+
+   blogs : BlogItem[],
 
    tech : {
     Frontend : Stack[],
