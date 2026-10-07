@@ -5,6 +5,7 @@ import HeroIntro        from "@/components/home/HeroIntro"
 import CTAButtons       from "@/components/home/CTAButtons"
 import Navbar           from "@/components/home/Navbar"
 import GithubHeatmap    from "@/components/home/GithubHeatmap"
+import PacmanGame from "../Pacmangame/pacman"
 
 export default function HeroMain() {
   return (
@@ -17,7 +18,8 @@ export default function HeroMain() {
       </div>
 
       {/* ── Banner + Avatar ── */}
-      <HeroBanner />
+      {/* <HeroBanner /> */}
+      <PacmanGame/>
 
       {/* ── Name, Title, Bio ── */}
       <HeroIntro />
