@@ -1,12 +1,15 @@
+import Image from "next/image";
+
 export default function PacmanGame() {
   return (
-    <div style={{ textAlign: "center" }}>
-      <iframe
-        src="/game/Pacman/index.html"
-        width="600"
-        height="700"
-        style={{ border: "none" }}
-        title="Pac-Man"
+    <div className="relative w-full mb-8 flex items-center justify-center bg-black rounded-lg overflow-hidden border border-neutral-800 shadow-md">
+      <Image
+        src="/pacman-banner.png"
+        alt="Pac-Man Banner"
+        width={826}
+        height={345}
+        className="w-full h-auto max-h-[350px] object-contain"
+        priority
       />
     </div>
   );
