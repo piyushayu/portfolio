@@ -42,17 +42,23 @@ function getLevel(count: number): number {
   return 4;
 }
 
-/* collect the first week-index where a new month starts */
+/* collect the first week-index where a new month starts,
+   skipping any label that is too close to the previous one */
+const MIN_LABEL_GAP = 3 * STEP; // at least 3 weeks (36px) between labels
+
 function getMonthMarkers(weeks: Week[]) {
   const markers: { label: string; x: number }[] = [];
   let lastMonth = -1;
+  let lastX = -MIN_LABEL_GAP; // so first label always renders
   weeks.forEach((week, wi) => {
     const day = week.contributionDays[0];
-    if (!day) return;
+    if (!day || !day.date) return;
     const m = new Date(day.date).getMonth();
-    if (m !== lastMonth) {
-      markers.push({ label: MONTH_LABELS[m], x: wi * STEP });
+    const x = wi * STEP;
+    if (m !== lastMonth && x - lastX >= MIN_LABEL_GAP) {
+      markers.push({ label: MONTH_LABELS[m], x });
       lastMonth = m;
+      lastX = x;
     }
   });
   return markers;
@@ -109,18 +115,26 @@ export default function GithubHeatmap() {
     );
   }
 
+  /* ── drop any weeks whose first day falls before Jan 1 of this year ── */
+  const currentYear = new Date().getFullYear();
+  const thisYearWeeks = data.weeks.filter((week) => {
+    const firstDay = week.contributionDays.find((d) => d.date);
+    if (!firstDay) return false;
+    return new Date(firstDay.date).getFullYear() >= currentYear;
+  });
+
   /* ── pad to always 52 weeks — future months render as empty black ── */
   const TOTAL_WEEKS = 52;
   const emptyDay = { contributionCount: 0, date: "" };
   const emptyWeek = { contributionDays: Array(7).fill(emptyDay) };
   const paddedWeeks = [
-    ...data.weeks,
-    ...Array(Math.max(0, TOTAL_WEEKS - data.weeks.length)).fill(emptyWeek),
+    ...thisYearWeeks,
+    ...Array(Math.max(0, TOTAL_WEEKS - thisYearWeeks.length)).fill(emptyWeek),
   ];
 
   /* ── computed layout ── */
   const weeks        = paddedWeeks;
-  const svgW         = TOTAL_WEEKS * STEP;   // always fixed 52-week width
+  const svgW         = TOTAL_WEEKS * STEP + 24; // +24 so Dec/last-month label isn't clipped
   const svgH         = 7 * STEP;
   const LABEL_HEIGHT = 18;
   const totalH       = LABEL_HEIGHT + svgH;
