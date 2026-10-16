@@ -1,6 +1,8 @@
 import { Data } from "@/app/Data";
 import Image from "next/image";
 import Link from "next/link";
+import { ExternalLink } from "lucide-react";
+import { FaGithub } from "react-icons/fa6";
 
 export default function Projects() {
     return (
@@ -8,12 +10,12 @@ export default function Projects() {
             {/* Section heading */}
             <div className="flex items-center justify-between mb-5">
                 <h2 className="text-2xl font-bold text-white tracking-tight">Projects</h2>
-                <a
-                    href="#"
+                <Link
+                    href="/projects"
                     className="text-sm text-neutral-400 hover:text-white transition-colors"
                 >
                     View all
-                </a>
+                </Link>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-neutral-800/40 border border-neutral-800/40">
@@ -43,23 +45,27 @@ export default function Projects() {
                                 </p>
                             </div>
 
-                            <div className="flex items-center gap-3 shrink-0 pt-0.5">
-                                <Link
+                            <div className="flex items-center gap-2.5 shrink-0 pt-0.5">
+                                <a
                                     href={project.link || "#"}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-xs text-neutral-400 hover:text-white transition-colors"
+                                    aria-label="Preview"
+                                    title="Preview"
+                                    className="text-neutral-400 hover:text-white transition-colors p-1"
                                 >
-                                    preview
-                                </Link>
-                                <Link
+                                    <ExternalLink className="w-4 h-4" />
+                                </a>
+                                <a
                                     href={project.githublink || "#"}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-xs text-neutral-400 hover:text-white transition-colors"
+                                    aria-label="GitHub Repository"
+                                    title="GitHub"
+                                    className="text-neutral-400 hover:text-white transition-colors p-1"
                                 >
-                                    github
-                                </Link>
+                                    <FaGithub className="w-4 h-4" />
+                                </a>
                             </div>
                         </div>
 

@@ -46,12 +46,15 @@ function getLevel(count: number): number {
    skipping any label that is too close to the previous one */
 const MIN_LABEL_GAP = 3 * STEP; // at least 3 weeks (36px) between labels
 
-function getMonthMarkers(weeks: Week[]) {
+function getMonthMarkers(weeks: Week[], currentYear: number) {
   const markers: { label: string; x: number }[] = [];
   let lastMonth = -1;
   let lastX = -MIN_LABEL_GAP; // so first label always renders
   weeks.forEach((week, wi) => {
-    const day = week.contributionDays[0];
+    const day =
+      week.contributionDays.find(
+        (d) => d.date && new Date(d.date).getFullYear() === currentYear
+      ) || week.contributionDays.find((d) => d.date);
     if (!day || !day.date) return;
     const m = new Date(day.date).getMonth();
     const x = wi * STEP;
@@ -115,12 +118,12 @@ export default function GithubHeatmap() {
     );
   }
 
-  /* ── drop any weeks whose first day falls before Jan 1 of this year ── */
+  /* ── keep any weeks that contain days from this year ── */
   const currentYear = new Date().getFullYear();
   const thisYearWeeks = data.weeks.filter((week) => {
-    const firstDay = week.contributionDays.find((d) => d.date);
-    if (!firstDay) return false;
-    return new Date(firstDay.date).getFullYear() >= currentYear;
+    return week.contributionDays.some(
+      (d) => d.date && new Date(d.date).getFullYear() >= currentYear
+    );
   });
 
   /* ── pad to always 52 weeks — future months render as empty black ── */
@@ -138,7 +141,7 @@ export default function GithubHeatmap() {
   const svgH         = 7 * STEP;
   const LABEL_HEIGHT = 18;
   const totalH       = LABEL_HEIGHT + svgH;
-  const monthMarkers = getMonthMarkers(weeks);
+  const monthMarkers = getMonthMarkers(weeks, currentYear);
 
   return (
     <div className="mt-10 w-full" style={{ position: "relative" }}>
@@ -186,18 +189,24 @@ export default function GithubHeatmap() {
                     height={CELL}
                     rx={2}
                     fill={LEVEL_COLORS[level]}
-                    style={{ cursor: "crosshair", transition: "fill 120ms" }}
+                    style={{ cursor: day.date ? "crosshair" : "default", transition: "fill 120ms" }}
                     onMouseEnter={(e) => {
+                      if (!day.date) return;
                       const svg = svgRef.current;
                       if (!svg) return;
                       const box = svg.getBoundingClientRect();
                       const scaleX = box.width / svgW;
                       const scaleY = box.height / totalH;
-                      const formatted = new Date(day.date).toLocaleDateString("en-US", {
-                        month: "short", day: "numeric", year: "numeric",
-                      });
+                      const dateObj = new Date(day.date);
+                      const formatted = isNaN(dateObj.getTime())
+                        ? ""
+                        : dateObj.toLocaleDateString("en-US", {
+                            month: "short",
+                            day: "numeric",
+                            year: "numeric",
+                          });
                       setTooltip({
-                        text: `${day.contributionCount} contribution${day.contributionCount !== 1 ? "s" : ""} · ${formatted}`,
+                        text: `${day.contributionCount} contribution${day.contributionCount !== 1 ? "s" : ""}${formatted ? ` · ${formatted}` : ""}`,
                         x: box.left + (x + CELL / 2) * scaleX,
                         y: box.top  + (LABEL_HEIGHT + y) * scaleY,
                       });
