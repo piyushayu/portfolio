@@ -1,18 +1,19 @@
 import { Data } from "@/app/Data";
 import Image from "next/image";
 import Link from "next/link";
+import { ExternalLink } from "lucide-react";
 
 export default function Blogs() {
     return (
         <section id="blog" className="max-w-200 mx-auto px-5 pb-20">
             <div className="flex items-center justify-between mb-5">
                 <h2 className="text-2xl font-bold text-white tracking-tight">Blogs</h2>
-                <a
-                    href="#"
+                <Link
+                    href="/blog"
                     className="text-sm text-neutral-400 hover:text-white transition-colors"
                 >
                     View all
-                </a>
+                </Link>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-neutral-800/40 border border-neutral-800/40">
@@ -41,15 +42,17 @@ export default function Blogs() {
                                 </p>
                             </div>
 
-                            <div className="flex items-center gap-3 shrink-0 pt-0.5">
-                                <Link
+                            <div className="flex items-center gap-2.5 shrink-0 pt-0.5">
+                                <a
                                     href={blog.link || "#"}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-xs text-neutral-400 hover:text-white transition-colors"
+                                    aria-label="Read blog"
+                                    title="Preview"
+                                    className="text-neutral-400 hover:text-white transition-colors p-1"
                                 >
-                                    median
-                                </Link>
+                                    <ExternalLink className="w-4 h-4" />
+                                </a>
                             </div>
                         </div>
 

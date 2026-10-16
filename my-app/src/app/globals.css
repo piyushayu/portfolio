@@ -1,7 +1,1 @@
 @import "tailwindcss";
-
-/* Dot-grid background pattern — can't do this in Tailwind alone */
-body {
-  background-image: radial-gradient(circle, #2e2e2e 1px, transparent 1px);
-  background-size: 20px 20px;
-}

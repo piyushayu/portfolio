@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="bg-black scroll-smooth">
       <body className={`${geistMono.variable} bg-black text-neutral-300 font-mono min-h-screen`}>
         {children}
       </body>
