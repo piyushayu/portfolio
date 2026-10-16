@@ -1,5 +1,10 @@
-import Link from "next/link"
-import LocationClock from "./LocationClock"
+"use client";
+import Link from "next/link";
+import LocationClock from "./LocationClock";
+
+async function getresume() {
+  window.open("/resume.pdf", "_blank", "noopener,noreferrer");
+}
 
 export default function CTAButtons() {
   return (
@@ -9,15 +14,15 @@ export default function CTAButtons() {
         href="/projects"
         className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-neutral-700 text-[13px] text-neutral-300 font-mono hover:border-neutral-500 hover:text-white hover:bg-neutral-800 transition-all duration-200"
       >
-        <span>👤</span> Show my work
+        <span>👤</span> My work
       </Link>
 
-      <Link
-        href="/Contact"
+      <button
+        onClick={getresume}
         className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-neutral-700 text-[13px] text-neutral-300 font-mono hover:border-neutral-500 hover:text-white hover:bg-neutral-800 transition-all duration-200"
       >
-        <span>📄</span> Resume
-      </Link>
+      <span>📄</span> Resume
+      </button>
     </div>
     <LocationClock/>
     </div>

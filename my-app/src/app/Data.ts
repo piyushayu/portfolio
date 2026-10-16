@@ -105,11 +105,38 @@ export const Data : Dataschema = {
     },
 
     Contact : {
-        Headline : "If you have came so far then you might have something to share with me , let's talk"
+        Headline : "If you have came so far then you might have something to share with me , let's talk",
+        links : [
+            {
+                name: "GitHub",
+                platform: "github",
+                url: "https://github.com/piyushayu"
+            },
+            {
+                name: "LinkedIn",
+                platform: "linkedin",
+                url: "https://www.linkedin.com/in/piyush-singh-1b9a0036a/"
+            },
+            {
+                name: "Twitter",
+                platform: "twitter",
+                url: "https://twitter.com/confusedpiyush"
+            },
+            {
+                name: "Mail",
+                platform: "mail",
+                url: "https://mail.google.com/mail/?view=cm&fs=1&to=piyush.ps1412@gmail.com"
+            },
+            {
+                name: "Resume",
+                platform: "resume",
+                url: "/resume.pdf"
+            }
+        ]
     },
 
     footer :{
-        Quote : `"Once you’re rich, every sentence you say turns into a motivational quote."`,
+        Quote : `"Once you’re rich, everything you say becomes a quote."`,
         Quotename : "Piyush Singh",
         name : "Piyush",
         year : 2026

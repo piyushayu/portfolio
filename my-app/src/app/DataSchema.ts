@@ -25,6 +25,12 @@ export interface BlogItem {
     date : string
 }
 
+export interface ContactLink {
+  name: string;
+  url: string;
+  platform?: string;
+}
+
 export interface Dataschema {
    home : {
     name : string,
@@ -57,6 +63,7 @@ export interface Dataschema {
 
    Contact : {
     Headline : string,
+    links : ContactLink[],
    }
 
    footer : {
