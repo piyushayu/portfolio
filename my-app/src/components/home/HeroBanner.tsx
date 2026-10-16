@@ -1,17 +1,19 @@
-import Image from "next/image"
-import Avatar from "../../../public/avatar.png"
-import Banner from "../../../public/banner.png"
 export default function HeroBanner() {
   return (
-    <div className="relative w-full mb-10">
-      <Image
-        src={Banner}
-        alt="Hero Banner"
-        width={800}
-        height={180}
-        className="w-full h-45 object-cover rounded-lg"
-        priority
-      />
-    </div>
+    <video
+      autoPlay
+      loop
+      muted
+      playsInline
+      controls
+      className="w-full rounded-md mb-4 object-cover"
+      style={{ maxHeight: "200px" }}
+      preload="metadata"
+      controlsList="nodownload"
+      disablePictureInPicture
+    >
+      <source src="/introbanner.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
   )
 }
